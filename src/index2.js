@@ -8,23 +8,22 @@ fetch('http://localhost:3000/beers')
 .then(res => res.json())
 .then(json => {
   //add all beer objects to array
-  for (i = 0; i < json.length; i++){
-    allBeerObjects.push(json[i])
-  }
-  //iterate through allBeerObjects array to create list items to go into
-  //allBeersList div
-  allBeerObjects.forEach(function(beer){
+  json.forEach(function(beer){
     const listItem = document.createElement('li');
     // listItem.setAttribute('data-id', `${dataId++}`)
-    listItem.dataset.id = dataId++
+    listItem.dataset.id = ++dataId
     listItem.setAttribute('class', 'list-group-item')
     listItem.innerHTML = beer.name;
     allBeersList.appendChild(listItem);
     //add event listener to each list item
     listItem.addEventListener('click', function(){
       //define selected beer
-      const selectedBeer = allBeerObjects[listItem.dataset.id]
-      //add selected beer to HTML and beerDetailDiv
+      const selectedBeerId = event.target.dataset.id
+      console.log(selectedBeerId)
+      fetch(`http://localhost:3000/beers/${selectedBeerId}`)
+      .then(res => res.json())
+      .then(json => {
+        const selectedBeer = json
       beerDetailDiv.innerHTML = `<h1>${selectedBeer.name}</h1>
       <img src="${selectedBeer.image_url}">
       <h3>${selectedBeer.tagline}</h3>
@@ -43,6 +42,7 @@ fetch('http://localhost:3000/beers')
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           }
+        })
         })
       })
     })
