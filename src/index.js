@@ -51,7 +51,7 @@ fetch('http://localhost:3000/beers')
               'Content-Type': 'application/json'
             },
             method: "PATCH",
-            body: JSON.stringify({description: {description: document.querySelector('textarea').value}})
+            body: JSON.stringify({description: document.querySelector('textarea').value})
           })
           .catch((err) => console.log(err))
         })
