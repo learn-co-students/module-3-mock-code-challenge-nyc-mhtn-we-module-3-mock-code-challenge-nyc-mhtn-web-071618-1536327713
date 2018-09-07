@@ -26,7 +26,7 @@ function createBeerHTML(details){
   return `<h1>${details.name}</h1>
   <img src="${details.image_url}">
   <h3>${details.tagline}</h3>
-  <textarea>${details.description}</textarea>
+  <textarea id="text">${details.description}</textarea>
   <button id="edit-beer" class="btn btn-info">
     Save
   </button>`
@@ -43,7 +43,7 @@ function createBeerHTML(details){
         let html = createBeerHTML(details)
         let beerDetails = document.getElementById("beer-detail")
         beerDetails.innerHTML = html
-        createSubmitListener()
+        createSubmitListener(details)
       })
   }
 
@@ -51,12 +51,30 @@ function createBeerHTML(details){
     locateBeerDetails(event.target)
   })
 
-  function createSubmitListener(){
+  function createSubmitListener(details){
     submit = document.getElementById("edit-beer")
     submit.addEventListener("click", function(event){
-      console.log(event)
+      let textElem = document.getElementById("text")
+      let text = textElem.value
+      patch(text, details)
     })
   }
+
+function patch(text, details){
+    let html = "http://localhost:3000/beers/" + details.id.toString()
+    fetch(html,
+  {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    method: "PATCH",
+    body: JSON.stringify({description: text})
+  })
+  //make a post request
+  // send the message and the name in the post request :fire:
+  // })
+}
 
 
 
