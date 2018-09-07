@@ -64,9 +64,26 @@ When the page loads, I should see a list of all of the beer names retrieved from
 </ul>
 ```
 
+// get the ul list group by ID
+//console.log to make sure Im getting it.
+//fetch
+//check network to make sure im getting data
+// parse, done
+//get only the name console to make sure im getting ut
+
+//1. creating li element with class name
+//console.log the list item to make sure getting it
+//2. make innerText with beer.name
+//add class to the list item to match styling above
+//will append to the ul(listGroup)
+// DONE :] !!!!!!!!!!!!!!!!!! 10:23
+
+
+
+
 ### Step 2 - Display Single Beer Details
 
-When I click a beer name, the application should reveal more information about that particular beer. 
+When I click a beer name, the application should reveal more information about that particular beer.
 See the example above for the additional information that should be displayed.
 
 * **Route:** GET `http://localhost:3000/beers/:id`
@@ -90,6 +107,24 @@ The html should look something like:
 </button>
 ```
 
+// to do list
+// add an event listener to the beer name
+//console.log to make sure it works with something like "hello"
+// get document by id beer-detail (its the parent)
+//console.log that
+// make its innerHTML above
+//but interpolate the name,  tagline, description
+//get image then done
+//done at 10:55
+
+
+
+
+
+
+
+
+
 ### Step 3 - Edit Beer Details
 
 When looking at the details of a beer, I can edit the current description of a beer. Clicking the 'Save' button will save any changes added to the description in the database.
@@ -111,6 +146,10 @@ To update a beer you'll need to make a PATCH request
   **Important Notes:**
   * For all intents and purposes, PATCH behaves the same as POST. If you know how to POST, you know how to PATCH
   * When using `fetch` to make a PATCH request, be sure to capitalize method: 'PATCH'
+
+// get value and store in variable
+
+// put that into desciption body
 
 
 ## Considerations
